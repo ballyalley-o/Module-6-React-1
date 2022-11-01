@@ -2,19 +2,18 @@ import { useState } from 'react'
 import Header from './components/Header'
 import EmojiChange from './components/EmojiChange';
 
+//ideally the calculator should be its own separate component, not included into App here
 
 function App() {
   const [calc, setCalc] = useState("");
-  const[result, setRes] = useState("");
+  const [result, setRes] = useState(0);
 
   const ops = ['/', '*', '+', '-', '.'];
 
   const updateCalc = value => {
     if(
       ops.includes(value) && calc === '' ||
-      ops.includes(value) && ops.includes(calc.slice(-1)
-
-      )
+      ops.includes(value) && ops.includes(calc.slice(-1))
 
     ) {
       return;
@@ -23,7 +22,7 @@ function App() {
     setCalc(calc + value);
 
     if(!ops.includes(value)) {
-      setRes(eval(calc + value).toString());
+      setRes(eval(calc + value).toString()); //try and avoid using eval in your code. it's discouraged as it's a security risk and red flag
     }
   }
 
@@ -42,7 +41,7 @@ function App() {
   }
 
   const calculate = () => {
-    setCalc(eval(calc).toString())
+    setCalc(eval(calc).toString()) //try and avoid using eval in your code. it's discouraged as it's a security risk and red flag
   }
 
   const ce =  () => {

@@ -1,5 +1,7 @@
 import PropTypes from 'prop-types'
 
+//this should be a .js file. JSX is the HTML looking stuff in the return, but the component itself is JS
+
 function Header({ text, bgColor, textColor }) {
     const headerStyles = {
         backgroundColor: bgColor,
